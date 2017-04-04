@@ -1,6 +1,8 @@
 
 """ Solving a Sudoku puzzle 
 http://stackoverflow.com/questions/1697334/algorithm-for-solving-sudoku  """
+import time
+
 
 c = [[3, 2, 0, 0, 9, 7, 8, 0, 5],
      [9, 0, 0, 0, 0, 6, 0, 7, 1],
@@ -56,6 +58,7 @@ def isValid(grid, i, j, e):
 
 
 def solveSudoku(grid, i=0, j=0):
+    start = time.time()
     i,j = findNextCellToFill(grid, i, j)
     # print 'sud fn i, j', i, j
     if i == -1:
@@ -69,17 +72,17 @@ def solveSudoku(grid, i=0, j=0):
             # Undo the current cell for backtracking > let this loop run further 
             # print 'e, i, j', e, i, j, ' backt'
             grid[i][j] = 0
-
-    return False
+    end = time.time()
+    return False, end-start
 
 
 print solveSudoku(c)
 
 
-for i in range(0,9):  # rows
-        for j in range(0,9):
-            if c[i][j] != solved[i][j]:
-                print 'err c[i][j] ', 'i, j', i, j, ' ', c[i][j], ' != solved[i][j]', solved[i][j]
+# for i in range(0,9):  # rows
+#         for j in range(0,9):
+#             if c[i][j] != solved[i][j]:
+#                 print 'err c[i][j] ', 'i, j', i, j, ' ', c[i][j], ' != solved[i][j]', solved[i][j]
 
 # this was the other possible solution
 
