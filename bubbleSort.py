@@ -1,6 +1,10 @@
 def bubbleSort(alist):
+  
+  # descending index from last:
   for passnum in range(len(alist)-1,0,-1):
     # print 'passnum', passnum
+
+    # increasing index from 0:
     for i in range(passnum):
       # print 'i', i
       if alist[i]>alist[i+1]:
