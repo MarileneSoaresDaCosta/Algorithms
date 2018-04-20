@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-import unittest
 
 
 def isUnique(string):
@@ -12,19 +11,6 @@ def isUnique(string):
 				return False
 	return True
 
-
-# import unittest
-
-# class TestStringMethods(unittest.TestCase):
-
-#     def test_isUnique(self):
-#         self.assertEqual(isUnique('abc defg '), True)
-#         self.assertEqual(isUnique('abc defg hijklmnopa'), False)
-
-   
-
-# if __name__ == '__main__':
-#     unittest.main()
 
 
 # testing:
