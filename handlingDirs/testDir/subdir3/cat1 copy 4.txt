@@ -1,0 +1,56 @@
+alpha_TESTResult.txt
+
+deleting procfile to try to solve problem
+app name: pacific-depths-90056
+url
+https://pacific-depths-90056.herokuapp.com
+caterpillar
+
+1234_TESTResult.* , the keyword we’re searching
+
+heroku config
+=== pacific-depths-90056 Config Vars
+DATABASE_URL: postgres://xrqfczufpblpbd:_FQNzohERjJIK7sCE7Oj-r9GHG@ec2-54-243-202-84.compute-1.amazonaws.com:5432/dfd0b2oa4dh6p9
+
+heroku pg
+=== 
+Plan:        Hobby-dev
+Status:      Available
+Connections: 0/20
+PG Version:  9.5.4
+Created:     2016-10-30 23:28 UTC
+Data Size:   7.4 MB
+Tables:      0
+Rows:        0/10000 (In compliance)
+Fork/Follow: Unsupported
+Rollback:    Unsupported
+Add-on:      postgresql-shaped-88079
+
+
+The example app you deployed already has database functionality, which you should be able to reach by visiting your app’s URL and appending /db. For example, if your app was deployed to https://wonderful-app-287.herokuapp.com/ then visit https://wonderful-app-287.herokuapp.com/db.
+https://pacific-depths-90056.herokuapp.com/db
+
+The code to access the database is straightforward, and makes use of a simple Django model called Greetings that you can find in hello/models.py.
+
+The only configuration that’s necessary can be found in gettingstarted/settings.py, which sets up the database based on the environment variable DATABASE_URL:
+
+# Parse database configuration from $DATABASE_URL
+import dj_database_url
+...
+DATABASES['default'] =  dj_database_url.config()
+
+And use this package to connect to DATABASE_URL in your code:
+import os
+import psycopg2
+import urlparse
+
+urlparse.uses_netloc.append("postgres")
+url = urlparse.urlparse(os.environ["DATABASE_URL"])
+
+conn = psycopg2.connect(
+    database=url.path[1:],
+    user=url.username,
+    password=url.password,
+    host=url.hostname,
+    port=url.port
+)

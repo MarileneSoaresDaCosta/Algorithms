@@ -1,0 +1,10 @@
+
+
+New in version 1.5.2.
+
+os.path.basename(path)
+Return the base name of pathname path. This is the second element of the pair returned by passing path to the function split(). Note that the result of this function is different from the Unix basename program; where basename for '/foo/bar/' returns 'bar', the basename() function returns an empty string ('').
+
+os.path.commonprefix(list)
+Return the longest path prefix (taken character-by-character) that is a prefix of all paths in list. If list is empty, return the empty string (''). Note that this may return invalid paths because it works a character at a time.
+
